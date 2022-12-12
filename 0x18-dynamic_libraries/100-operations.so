@@ -1,1 +1,2 @@
-
+from ctypes import *
+print(1-create_dynamic_lib.sh,libdynamic.so)
