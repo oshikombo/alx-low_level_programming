@@ -1,13 +1,36 @@
-var sorted = require('sorted-array-functions')
-var list = []
+#include "search_algos.h"
 
-sorted.add(list, 1)
-sorted.add(list, 4)
-sorted.add(list, 2)
+/**
+ * binary_search - performs binary search
+ * @array: the integer array
+ * @size: its size
+ * @value: value to search for
+ *
+ * Return: the index found or -1
+ */
+int binary_search(int *array, size_t size, int value)
+{
+	size_t i = 0;
+	int *a = array;
 
-console.log(list) // prints out [1, 2, 4]
-console.log(sorted.has(list, 2)) // returns true
-console.log(sorted.has(list, 3)) // returns false
-console.log(sorted.eq(list, 2)) // returns 1 (the index)
-console.log(sorted.gt(list, 2)) // returns 2
-console.log(sorted.gt(list, 4)) // returns -1
+	if (!array)
+		return (-1);
+
+	while (size)
+	{
+		for (i = 0, printf("Searching in array: "); i < size; i++)
+			printf("%d%s", a[i], i + 1 == size ? "\n" : ", ");
+
+		i = (size - 1) / 2;
+		if (a[i] == value)
+			return ((a - array) + i);
+		else if (a[i] > value)
+			size = i;
+		else
+		{
+			a += (i + 1);
+			size -= (i + 1);
+		}
+	}
+	return (-1);
+}
